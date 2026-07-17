@@ -19,8 +19,6 @@ class BankAccount:
         return self
 
     def withdraw(self, amount):
-        if amount <= 0:
-            raise ValueError("Jumlah penarikan harus positif")
         if amount > self.balance:
             raise ValueError("Saldo tidak cukup")
         self.balance -= amount
@@ -36,15 +34,13 @@ class BankAccount:
         interest = self.balance * (rate_percent / 100)
         self.balance += interest
         self.history.append(f"Interest: +{interest}")
-        return self
 
     def get_average_transaction(self):
-        if not self.history:
-            return 0
         amounts = []
         for entry in self.history:
-            value_str = entry.split(":")[1].strip()
-            amounts.append(float(value_str))
+            # Mengambil angka setelah tanda :, menghapus spasi, +, dan konversi ke float
+            val = entry.split(":")[1].replace("+", "").strip()
+            amounts.append(float(val))
         return sum(amounts) / len(amounts)
 
 
@@ -54,21 +50,19 @@ if __name__ == "__main__":
 
     acc1.deposit(20000)
     try:
-        acc1.withdraw(500000)
+        acc1.withdraw(500000)  # seharusnya gagal karena saldo tidak cukup
     except ValueError as e:
         print("Error withdraw:", e)
     print("Saldo Budi setelah withdraw besar:", acc1.balance)
 
     acc1.transfer(acc2, 10000)
     print("Saldo Budi setelah transfer:", acc1.balance)
-    print("Saldo Siti setelah menerima transfer:", acc2.balance)
+    print("Saldo Siti setelah menerima transfer:", acc2.balance)  # seharusnya bertambah
 
-    acc1.apply_interest(5)
+    acc1.apply_interest(5)  # sekarang 5% (5/100)
     print("Saldo Budi setelah bunga:", acc1.balance)
 
     try:
         print("Rata-rata transaksi:", acc1.get_average_transaction())
-    except Exception as e:
+    except ValueError as e:
         print("Error di get_average_transaction:", e)
-        
-        
