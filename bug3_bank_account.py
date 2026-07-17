@@ -23,14 +23,15 @@ class BankAccount:
             raise ValueError("Saldo tidak mencukupi")
         self.balance -= amount
         self.history.append(f"Withdraw: -{amount}")
-        return self
 
     def transfer(self, other_account, amount):
         self.withdraw(amount)
         other_account.deposit(amount)
-        return self
 
     def apply_interest(self, rate_percent):
+        # BUG: rate_percent dianggap sudah desimal (0.05),
+        # padahal dipanggil dengan nilai persen (5 untuk 5%),
+        # sehingga bunga yang ditambahkan jadi 100x lebih besar dari seharusnya
         interest = self.balance * (rate_percent / 100)
         self.balance += interest
         self.history.append(f"Interest: +{interest}")
@@ -38,8 +39,10 @@ class BankAccount:
     def get_average_transaction(self):
         amounts = []
         for entry in self.history:
-            val = entry.split(":")[1].strip()
-            amounts.append(float(val))
+            # BUG: split(":")[1] masih mengandung tanda +/- dan spasi,
+            # int() akan error saat mencoba parsing
+            value_str = entry.split(":")[1].replace("+", "").strip()
+            amounts.append(float(value_str))
         return sum(amounts) / len(amounts)
 
 
@@ -51,7 +54,7 @@ if __name__ == "__main__":
     try:
         acc1.withdraw(500000)  # seharusnya gagal karena saldo tidak cukup
     except ValueError as e:
-        print("Gagal withdraw:", e)
+        print("Error withdraw:", e)
     print("Saldo Budi setelah withdraw besar:", acc1.balance)
 
     acc1.transfer(acc2, 10000)
