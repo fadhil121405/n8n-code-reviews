@@ -17,9 +17,8 @@ def add_item(item, items=None):
 
 def reverse_string(s):
     # BUG: range mulai dari len(s) bukan len(s)-1, menyebabkan IndexError
-    # Diperbaiki dengan slicing yang lebih efisien
-    result = s[::-1]
-    return result
+    # Diperbaiki dengan slicing yang lebih Pythonic
+    return s[::-1]
 
 
 def remove_duplicates(items):
