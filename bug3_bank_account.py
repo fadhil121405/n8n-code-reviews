@@ -15,3 +15,4 @@ rek2 = RekeningBank(50000)
 rek1.transfer(rek2, 200000)
 print("Saldo rek1:", rek1.saldo)
 print("Saldo rek2:", rek2.saldo)
+

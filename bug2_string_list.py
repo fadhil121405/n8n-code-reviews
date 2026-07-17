@@ -14,3 +14,4 @@ nama = ["Andi", "Budi", "Citra"]
 print(gabung_nama(nama))
 print(tambah_item("apel"))
 print(tambah_item("jeruk"))
+
