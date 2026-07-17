@@ -1,1 +1,2 @@
-Silakan lampirkan kode atau diff yang ingin diperbaiki agar saya dapat memberikan solusi yang akurat. Anda belum menyertakan kode sumber pada pesan sebelumnya.
+// Kode belum disediakan oleh pengguna.
+// Silakan berikan kode yang ingin diperbaiki untuk diproses lebih lanjut.
