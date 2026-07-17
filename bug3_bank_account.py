@@ -70,3 +70,4 @@ if __name__ == "__main__":
         print("Rata-rata transaksi:", acc1.get_average_transaction())
     except Exception as e:
         print("Error di get_average_transaction:", e)
+        

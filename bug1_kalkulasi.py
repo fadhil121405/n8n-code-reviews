@@ -49,3 +49,4 @@ if __name__ == "__main__":
     print("average([2,4,6]) =", average([2, 4, 6]))  # Output: 4.0
     print("find_max([-5,-2,-9]) =", find_max([-5, -2, -9]))  # Output: -2
     print("factorial(5) =", factorial(5))         # Output: 120
+    

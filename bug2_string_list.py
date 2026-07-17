@@ -54,3 +54,4 @@ if __name__ == "__main__":
         print(split_and_join("a,b,c"))
     except AttributeError as e:
         print("Error di split_and_join:", e)
+        
