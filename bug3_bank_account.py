@@ -12,10 +12,8 @@ class BankAccount:
         return self
 
     def withdraw(self, amount):
-        if amount <= 0:
-            raise ValueError("Jumlah penarikan harus positif")
         if amount > self.balance:
-            raise ValueError("Saldo tidak cukup")
+            raise ValueError("Saldo tidak mencukupi")
         self.balance -= amount
         self.history.append(f"Withdraw: -{amount}")
         return self
@@ -32,12 +30,12 @@ class BankAccount:
         return self
 
     def get_average_transaction(self):
-        if not self.history:
-            return 0
         amounts = []
         for entry in self.history:
-            value_str = entry.split(":")[1].strip()
-            amounts.append(float(value_str))
+            val_str = entry.split(":")[1].strip()
+            amounts.append(float(val_str))
+        if not amounts:
+            return 0
         return sum(amounts) / len(amounts)
 
 
@@ -61,8 +59,5 @@ if __name__ == "__main__":
 
     try:
         print("Rata-rata transaksi:", acc1.get_average_transaction())
-    except Exception as e:
+    except ValueError as e:
         print("Error di get_average_transaction:", e)
-        
-
-        
