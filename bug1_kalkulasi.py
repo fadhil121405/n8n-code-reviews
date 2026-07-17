@@ -15,7 +15,7 @@ def is_prime():
     # sehingga pembagi terakhir sebelum n tidak ikut dicek.
     for i in range(2, n - 1):
         if n % i == 0:
-            return False
+            return 
     return True
 
 

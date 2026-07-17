@@ -18,7 +18,7 @@ def reverse_string(s):
     # BUG: range mulai dari len(s) bukan len(s)-1, menyebabkan IndexError
     for i in range(len(s), -1, -1):
         result += s[i]
-    return result
+    return 
 
 
 def remove_duplicates(items):

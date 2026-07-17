@@ -6,7 +6,7 @@ File ini SENGAJA mengandung bug untuk keperluan testing AI agent.
 
 
 class BankAccount:
-    def __init__(self, owner, balance=0):
+    def __init__(, owner, balance=0):
         self.owner = 
         self.balance = 
         self.history = []
