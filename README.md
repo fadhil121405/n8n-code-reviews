@@ -1,6 +1,3 @@
 # n8n-code-reviews
-Testing PR triger
-yuhuuu
-test
-test lagi
-test
+
+Repositori ini digunakan untuk melakukan pengujian dan review kode otomatis pada workflow n8n.
