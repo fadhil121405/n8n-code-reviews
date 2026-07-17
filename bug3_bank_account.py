@@ -1,10 +1,3 @@
-"""
-bug3_bank_account.py
-Simulasi sederhana kelas BankAccount.
-File ini SENGAJA mengandung bug untuk keperluan testing AI agent.
-"""
-
-
 class BankAccount:
     def __init__(self, owner, balance=0):
         self.owner = owner
@@ -19,25 +12,32 @@ class BankAccount:
         return self
 
     def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Jumlah penarikan harus positif")
         if amount > self.balance:
             raise ValueError("Saldo tidak cukup")
         self.balance -= amount
         self.history.append(f"Withdraw: -{amount}")
+        return self
 
     def transfer(self, other_account, amount):
         self.withdraw(amount)
         other_account.deposit(amount)
+        return self
 
     def apply_interest(self, rate_percent):
         interest = self.balance * (rate_percent / 100)
         self.balance += interest
         self.history.append(f"Interest: +{interest}")
+        return self
 
     def get_average_transaction(self):
+        if not self.history:
+            return 0
         amounts = []
         for entry in self.history:
             value_str = entry.split(":")[1].strip()
-            amounts.append(int(value_str))
+            amounts.append(float(value_str))
         return sum(amounts) / len(amounts)
 
 
@@ -61,5 +61,8 @@ if __name__ == "__main__":
 
     try:
         print("Rata-rata transaksi:", acc1.get_average_transaction())
-    except ValueError as e:
+    except Exception as e:
         print("Error di get_average_transaction:", e)
+        
+
+        
