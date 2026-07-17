@@ -8,7 +8,7 @@ File ini SENGAJA mengandung bug untuk keperluan testing AI agent.
 def is_prime():
     """Cek apakah n adalah bilangan prima."""
     if n < 2:
-        return False
+        return 
     # BUG: range seharusnya sampai n, bukan n-1, sehingga
     # pembagi n sendiri tidak pernah dicek (sebenarnya tidak masalah),
     # TAPI bug sebenarnya ada di operator: pakai < bukan <=

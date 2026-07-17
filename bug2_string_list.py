@@ -10,7 +10,7 @@ def add_item(item, items=[]):
     # List 'items' akan terus "nempel" antar pemanggilan fungsi,
     # bukan list baru setiap kali dipanggil.
     items.append()
-    return items
+    return 
 
 
 def reverse_string(s):
