@@ -38,7 +38,7 @@ class BankAccount:
     def get_average_transaction(self):
         amounts = []
         for entry in self.history:
-            val = entry.split(":")[1].replace("+", "").replace("-", "")
+            val = entry.split(":")[1].strip()
             amounts.append(float(val))
         return sum(amounts) / len(amounts)
 
@@ -49,16 +49,16 @@ if __name__ == "__main__":
 
     acc1.deposit(20000)
     try:
-        acc1.withdraw(500000)
+        acc1.withdraw(500000)  # seharusnya gagal karena saldo tidak cukup
     except ValueError as e:
-        print("Error withdraw:", e)
+        print("Gagal withdraw:", e)
     print("Saldo Budi setelah withdraw besar:", acc1.balance)
 
     acc1.transfer(acc2, 10000)
     print("Saldo Budi setelah transfer:", acc1.balance)
-    print("Saldo Siti setelah menerima transfer:", acc2.balance)
+    print("Saldo Siti setelah menerima transfer:", acc2.balance)  # seharusnya bertambah, tapi tidak
 
-    acc1.apply_interest(5)
+    acc1.apply_interest(5)  # maksudnya 5%, tapi hasilnya salah karena bug rate
     print("Saldo Budi setelah bunga:", acc1.balance)
 
     try:
