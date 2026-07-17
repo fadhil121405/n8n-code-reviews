@@ -36,8 +36,8 @@ class BankAccount:
     def get_average_transaction(self):
         amounts = []
         for entry in self.history:
-            val = entry.split(":")[1].replace("+", "").strip()
-            amounts.append(float(val))
+            value_str = entry.split(":")[1].strip()
+            amounts.append(int(value_str))
         return sum(amounts) / len(amounts)
 
 
