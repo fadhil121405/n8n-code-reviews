@@ -17,3 +17,4 @@ print("Saldo rek1:", rek1.saldo)
 print("Saldo rek2:", rek2.saldo)
 
 
+

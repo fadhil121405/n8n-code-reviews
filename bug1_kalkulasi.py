@@ -17,4 +17,3 @@ print("Diskon:", hitung_diskon(50000, 10))
 print("Item terakhir:", ambil_item_terakhir(barang))
 print("Rata-rata:", hitung_rata_harga(barang))
 
-
