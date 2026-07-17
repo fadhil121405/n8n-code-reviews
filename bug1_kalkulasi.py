@@ -5,7 +5,7 @@ File ini SENGAJA mengandung bug untuk keperluan testing AI agent.
 """
 
 
-def is_prime(n):
+def is_prime():
     """Cek apakah n adalah bilangan prima."""
     if n < 2:
         return False

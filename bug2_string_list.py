@@ -9,7 +9,7 @@ def add_item(item, items=[]):
     # BUG KLASIK: mutable default argument.
     # List 'items' akan terus "nempel" antar pemanggilan fungsi,
     # bukan list baru setiap kali dipanggil.
-    items.append(item)
+    items.append()
     return items
 
 
