@@ -1,10 +1,3 @@
-"""
-bug2_string_list.py
-Berisi fungsi-fungsi manipulasi string & list.
-File ini SENGAJA mengandung bug untuk keperluan testing AI agent.
-"""
-
-
 def add_item(item, items=None):
     # BUG KLASIK: mutable default argument.
     # List 'items' akan terus "nempel" antar pemanggilan fungsi,

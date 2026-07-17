@@ -1,10 +1,3 @@
-"""
-bug3_bank_account.py
-Simulasi sederhana kelas BankAccount.
-File ini SENGAJA mengandung bug untuk keperluan testing AI agent.
-"""
-
-
 class BankAccount:
     def __init__(self, owner, balance=0):
         self.owner = owner
@@ -19,6 +12,8 @@ class BankAccount:
         return self
 
     def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Jumlah penarikan harus positif")
         if amount > self.balance:
             raise ValueError("Saldo tidak cukup")
         self.balance -= amount
@@ -37,11 +32,12 @@ class BankAccount:
         return self
 
     def get_average_transaction(self):
+        if not self.history:
+            return 0
         amounts = []
         for entry in self.history:
-            # Mengambil substring setelah titik dua dan menghapus spasi/tanda + jika ada
-            val = entry.split(":")[1].strip()
-            amounts.append(int(val))
+            value_str = entry.split(":")[1].strip()
+            amounts.append(float(value_str))
         return sum(amounts) / len(amounts)
 
 
@@ -51,19 +47,22 @@ if __name__ == "__main__":
 
     acc1.deposit(20000)
     try:
-        acc1.withdraw(500000)  # seharusnya gagal karena saldo tidak cukup
+        acc1.withdraw(500000)
     except ValueError as e:
         print("Error withdraw:", e)
     print("Saldo Budi setelah withdraw besar:", acc1.balance)
 
     acc1.transfer(acc2, 10000)
     print("Saldo Budi setelah transfer:", acc1.balance)
-    print("Saldo Siti setelah menerima transfer:", acc2.balance)  # seharusnya bertambah, tapi tidak
+    print("Saldo Siti setelah menerima transfer:", acc2.balance)
 
-    acc1.apply_interest(5)  # maksudnya 5%, tapi hasilnya salah karena bug rate
+    acc1.apply_interest(5)
     print("Saldo Budi setelah bunga:", acc1.balance)
 
     try:
         print("Rata-rata transaksi:", acc1.get_average_transaction())
-    except ValueError as e:
+    except Exception as e:
         print("Error di get_average_transaction:", e)
+        
+
+        
