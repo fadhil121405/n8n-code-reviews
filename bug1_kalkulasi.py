@@ -19,9 +19,7 @@ def average(numbers):
     """Menghitung rata-rata dari list angka."""
     if not numbers:
         return 0
-    total = 0
-    for n in numbers:
-        total += n
+    total = sum(numbers)
     return total / len(numbers)
 
 
